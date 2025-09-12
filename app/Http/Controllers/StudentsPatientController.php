@@ -158,4 +158,25 @@ class StudentsPatientController extends Controller
             return response()->json(['success' => false, 'message' => 'Delete Failed: ' . $e->getMessage()], 500);
         }
     }
+
+    public function fetchStudEnrollmentHistory(Request $request)
+    {
+        $stdntid = $request->input('stdntid');
+        $campus = Auth::guard('web')->user()->campus;
+
+        $campusArray = array_map('trim', explode(',', $campus));
+
+        $enrollmentHistory = StudEnrolmentHistory::join('coasv2_db_schedule.programs', 'program_en_history.progCod', '=', 'coasv2_db_schedule.programs.progCod')
+            ->where('program_en_history.studentID', $stdntid)
+            ->where(function ($q) use ($campusArray) {
+                foreach ($campusArray as $campus) {
+                    $q->orWhere('program_en_history.campus', 'LIKE', "%$campus%");
+                }
+            })
+            ->select('program_en_history.*', 'coasv2_db_schedule.programs.progAcronym')
+            ->orderBy('schlyear', 'ASC')
+            ->get();
+
+        return response()->json(['data' => $enrollmentHistory]);
+    }
 }

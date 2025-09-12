@@ -136,7 +136,6 @@
     <!-- fullCalendar 2.2.5 -->
     <script src="{{ asset('style/plugins/moment1/moment.min.js') }}"></script>
     <script src="{{ asset('style/plugins/fullcalendar1/fullcalendar.js') }}"></script>
-    <script src="{{ asset('js/event/calendar.js') }}"></script>
     <!-- DataTables  & Plugins -->
     <script src="{{ asset('style/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('style/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
@@ -152,8 +151,6 @@
     <script src="{{ asset('style/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
     <!-- Select2 -->
     <script src="{{ asset('style/plugins/select2/js/select2.full.min.js') }}"></script>
-    <script src="{{ asset('js/basic/table.js') }}"></script>
-    <script src="{{ asset('js/validation/patientValidation.js') }}"></script>
 
     <script>
         // Store session message in sessionStorage

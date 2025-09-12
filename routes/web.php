@@ -49,6 +49,8 @@ Route::group(['middleware'=>['login_auth']],function(){
         Route::get('student/list/show/search/file/{id}', [FileController::class, 'fileRead'])->name('fileRead');
         Route::post('student/list/show/search/file/file-create/{id}', [FileController::class, 'fileCreate'])->name('fileCreate');
         Route::delete('student/list/show/search/file/file/deleteFile/{id}', [FileController::class, 'deleteFile'])->name('deleteFile');
+
+        Route::get('/student/show/historyajax', [StudentsPatientController::class, 'fetchStudEnrollmentHistory'])->name('fetchStudEnrollmentHistory');
     });
 
     Route::prefix('patient-visit')->group( function(){
