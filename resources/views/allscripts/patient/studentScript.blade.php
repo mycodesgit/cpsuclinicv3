@@ -21,6 +21,7 @@
                         return `${lname}, ${fname} ${mname}`.trim();
                     }
                 }, 
+                { data: 'stdntid' },   
                 { data: 'sex' },   
                 { data: 'c_status' },   
                 { data: 'studCourse' },   

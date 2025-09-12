@@ -27,6 +27,7 @@
                             <thead>
                                 <tr>
                                     <th class="text-left">Name</th>
+                                    <th class="text-left">StudID</th>
                                     <th class="text-left">Gender</th>
                                     <th class="text-left">Civil Status</th>
                                     <th class="text-left">Course</th>
