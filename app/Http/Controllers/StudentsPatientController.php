@@ -65,6 +65,7 @@ class StudentsPatientController extends Controller
                     'fname' => $patient->fname,
                     'lname' => $patient->lname,
                     'mname' => $patient->mname,
+                    'stdntid' => $patient->stdntid,
                     'sex' => $patient->sex,
                     'studCourse' => $patient->studCourse,
                     'c_status' => $patient->c_status,
