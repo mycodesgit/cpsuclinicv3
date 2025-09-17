@@ -9,6 +9,7 @@
     $toothPatientActive = in_array($curr_route, ['toothExtractRead', 'toothExtractSearch']) ? 'active' : '';
 
     $patientDataReportActive = in_array($curr_route, ['reportPatientDataRead', 'reportPatientDataShow']) ? 'active' : '';
+    $medicineDataReportActive = in_array($curr_route, ['reportMedicineDataRead']) ? 'active' : '';
 @endphp
 
 
@@ -39,8 +40,9 @@
 @if(request()->is('reports') || request()->is('reports/*'))
     <div class="mt-3" style="font-size: 13pt;">
         <div class="nav flex-column nav-pills nav-stacked nav-tabs-right h-100" aria-orientation="vertical">
-            <a class="nav-link {{ $patientDataReportActive }}" href="{{ route('reportPatientDataRead') }}">Patient Data</a>
-            <a class="nav-link" href="">Medicines</a>                                
+            <a class="nav-link {{ $patientDataReportActive }}" href="{{ route('reportPatientDataRead') }}">Patient Data Report</a>
+            <a class="nav-link {{ $medicineDataReportActive }}" href="{{ route('reportMedicineDataRead') }}">Medicines Report</a>                                
+            <a class="nav-link" href="">Accomplishment Report</a>                                
         </div>
     </div>
 @endif

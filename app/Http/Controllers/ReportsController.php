@@ -87,4 +87,9 @@ class ReportsController extends Controller
         $pdf = PDF::loadView('reports.listmhistorypdf', compact('patients', 'hregion', 'hprovince', 'hcity', 'hbarangay', 'gregion', 'gprovince', 'gcity', 'gbarangay', 'id'))->setPaper('Legal', 'portrait');
         return $pdf->stream();
     }
+
+    public function reportMedicineDataRead()
+    {
+        return view('reports.listmedrep');
+    }
 }

@@ -11,9 +11,13 @@ class Medicine extends Model
     protected $table='medicines';  
 
     protected $fillable = [
+        'category',
         'medicine',
         'qty',
-        'expirydate'
+        'measure',
+        'lotno',
+        'expirydate',
+        'refnoid'
     ];
 
 

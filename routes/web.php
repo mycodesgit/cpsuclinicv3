@@ -87,6 +87,8 @@ Route::group(['middleware'=>['login_auth']],function(){
         Route::get('/refused', [ReportsController::class,'refusedReport'])->name('refusedReport');
         Route::get('/waiver', [ReportsController::class,'waiverReport'])->name('waiverReport');
         Route::get('/pehe-report/{id}', [ReportsController::class,'peheReport'])->name('peheReport');
+
+        Route::get('/medicine/search', [ReportsController::class,'reportMedicineDataRead'])->name('reportMedicineDataRead');
     });
 
 });

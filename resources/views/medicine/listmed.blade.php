@@ -6,31 +6,45 @@
         <div class="col-md-3">
             <div class="card">
                 <div class="card-body">
-                    <div class="">
-                        <div class="page-header" style="border-bottom: 1px solid #04401f;">
-                            <h4>Menu</h4>
-                        </div>
-                        <form method="post" action="{{route('medicineCreate') }}" id="medicineForm">
-                            @if(isset($medicine))
-                                <input type="hidden" name="id" value="{{ $medicine->id }}">
-                            @endif
-                            @csrf
-                            <div class="form-group mt-2">
-                                <div class="form-row">
-                                    <div class="col-md-12">
-                                        <label class="badge badge-secondary">Medicine Name</label><br>
-                                        <input type="text" name="medicine" class="form-control form-control-sm" autocomplete="off" placeholder="Medicine">
-                                        <label class="badge badge-secondary">Quantity</label><br>
-                                        <input type="number" name="qty" class="form-control form-control-sm" autocomplete="off" placeholder="Quantity">
-                                        <label class="badge badge-secondary">Expiry Date</label><br>
-                                        <input type="date" name="expirydate" class="form-control form-control-sm" autocomplete="off" placeholder="Expiry Date">
-                                    </div>
-                                   <br>
-                                   <button type="submit" class="btn btn-success mt-3">{{ (isset($medicine)) ? 'Update' : 'Save' }}</button>
+                    <div class="page-header" style="border-bottom: 1px solid #04401f;">
+                        <h4>Menu</h4>
+                    </div>
+                    <form method="post" action="{{route('medicineCreate') }}" id="medicineForm">
+                        @csrf
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <label class="badge badge-secondary">Category</label>
+                                    <input type="text" name="category" oninput="var words = this.value.split(' '); for(var i = 0; i < words.length; i++){ words[i] = words[i].substr(0,1).toUpperCase() + words[i].substr(1); } this.value = words.join(' ');" class="form-control form-control-sm" autocomplete="off" placeholder="Enter Category">
+                                </div>
+                                <div class="col-md-12 mt-2">
+                                    <label class="badge badge-secondary">Medicine Name</label>
+                                    <input type="text" name="medicine" oninput="var words = this.value.split(' '); for(var i = 0; i < words.length; i++){ words[i] = words[i].substr(0,1).toUpperCase() + words[i].substr(1); } this.value = words.join(' ');" class="form-control form-control-sm" autocomplete="off" placeholder="Enter Medicine">
+                                </div>
+                                <div class="col-md-12 mt-2">
+                                    <label class="badge badge-secondary">Quantity</label>
+                                    <input type="number" name="qty"  class="form-control form-control-sm" autocomplete="off" placeholder="Enter Quantity">
+                                </div>
+                                <div class="col-md-12 mt-2">
+                                    <label class="badge badge-secondary">Unit Measure</label>
+                                    <input type="text" name="measure" class="form-control form-control-sm" autocomplete="off" placeholder="Unit Measure">
+                                </div>
+                                <div class="col-md-12 mt-2">
+                                    <label class="badge badge-secondary">Lot No.</label>
+                                    <input type="text" name="lotno" class="form-control form-control-sm" autocomplete="off" placeholder="Lot No.">
+                                </div>
+                                <div class="col-md-12 mt-2">
+                                    <label class="badge badge-secondary">Expiry Date</label><br>
+                                    <input type="date" name="expirydate" class="form-control form-control-sm" autocomplete="off" placeholder="Expiry Date">
+                                </div>
+                                <div class="col-md-12 mt-2">
+                                    <label class="badge badge-secondary">Reference ID</label>
+                                    <input type="text" name="refnoid" class="form-control form-control-sm" autocomplete="off" placeholder="Reference ID">
                                 </div>
                             </div>
-                        </form>                 
-                    </div>
+                        </div>
+                        <button type="submit" class="btn btn-success mt-3">{{ (isset($medicine)) ? 'Update' : 'Save' }}</button>
+                    </form>  
                 </div>
             </div>
         </div>
