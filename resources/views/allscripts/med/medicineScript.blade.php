@@ -44,8 +44,11 @@
             searching: true,
             paging: true,
             "columns": [
+                {data: 'category'},
                 {data: 'medicine'},
                 {data: 'qty'},
+                {data: 'measure'},
+                {data: 'lotno'},
                 {data: 'expirydate',
                         render: function (data, type, row) {
                         if (type === 'display') {
@@ -55,6 +58,7 @@
                         }
                     }
                 },
+                {data: 'refnoid'},
                 {
                     data: 'id',
                     render: function(data, type, row) {

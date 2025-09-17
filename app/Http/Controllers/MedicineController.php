@@ -32,8 +32,18 @@ class MedicineController extends Controller
                 'expirydate' => 'required',
             ]);
 
+            $catName = $request->input('category'); 
             $medicineName = $request->input('medicine'); 
-            $existingMedicine = Medicine::where('medicine', $medicineName)->first();
+            $measureName = $request->input('measure'); 
+            $lotnoName = $request->input('lotno'); 
+            $refnoidName = $request->input('refnoid'); 
+
+            $existingMedicine = Medicine::where('category', $catName)
+                            ->where('medicine', $medicineName)
+                            ->where('measure', $measureName)
+                            ->where('lotno', $lotnoName)
+                            ->where('refnoid', $refnoidName)
+                            ->first();
 
             if ($existingMedicine) {
                 return response()->json(['error' => true, 'message' => 'Medicine already exists'], 404);
@@ -41,9 +51,13 @@ class MedicineController extends Controller
 
             try {
                 Medicine::create([
-                    'medicine' => $request->input('medicine'),
+                    'category' => $catName,
+                    'medicine' => $medicineName,
                     'qty'=> $request->input('qty'),
-                    'expirydate'=> $request->input('expirydate')
+                    'measure'=> $measureName,
+                    'lotno'=> $lotnoName,
+                    'expirydate'=> $request->input('expirydate'),
+                    'refnoid'=> $refnoidName,
                 ]);
 
                 return response()->json(['success' => true, 'message' => 'Medicine stored successfully'], 200);

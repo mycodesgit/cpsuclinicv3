@@ -54,9 +54,13 @@
                         <table id="medlistab" class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>medicine</th>
+                                    <th>Category</th>
+                                    <th>Medicine</th>
                                     <th>Quantity</th>
+                                    <th>Unit Measure</th>
+                                    <th>Lot No.</th>
                                     <th>Expiry Date</th>
+                                    <th>Reference ID</th>
                                     <th class="text-center" width="7%">Action</th>
                                 </tr>
                             </thead>
