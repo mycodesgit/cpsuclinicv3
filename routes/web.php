@@ -89,6 +89,10 @@ Route::group(['middleware'=>['login_auth']],function(){
         Route::get('/pehe-report/{id}', [ReportsController::class,'peheReport'])->name('peheReport');
 
         Route::get('/medicine/search', [ReportsController::class,'reportMedicineDataRead'])->name('reportMedicineDataRead');
+        Route::get('/medicine/search/result/view', [ReportsController::class,'reportsearch_MedicineDataRead'])->name('reportsearch_MedicineDataRead');
+        Route::get('/medicine/search/result/view/pdfreport', [ReportsController::class,'reportsearchpdf_MedicineDataRead'])->name('reportsearchpdf_MedicineDataRead');
+
+        Route::get('/medicine/search/stocks', [ReportsController::class,'reportStockMedDataRead'])->name('reportStockMedDataRead');
     });
 
 });

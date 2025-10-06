@@ -92,4 +92,50 @@ class ReportsController extends Controller
     {
         return view('reports.listmedrep');
     }
+
+    public function reportsearch_MedicineDataRead(Request $request)
+    {
+        $monthselected = $request->input('month');
+        $currentYear = now()->year;
+
+        $monthmed = Medicine::whereYear('created_at', $currentYear)->whereMonth('created_at', $monthselected)->get();
+
+        return view('reports.listmedrep_search');
+    }
+
+    public function reportsearchpdf_MedicineDataRead(Request $request)
+    {
+        $monthselected = $request->input('month');
+        $currentYear = now()->year;
+
+        $monthmed = Medicine::whereYear('created_at', $currentYear)->whereMonth('created_at', $monthselected)->get();
+        $grouped = $monthmed->groupBy('category');
+        $data = [
+            'monthmed' => $grouped,
+            'monthselected' => $monthselected,
+        ];
+
+        $pdf = PDF::loadView('reports.listmedrepsearchpdf', $data)->setPaper('Legal', 'landscape');
+
+        return $pdf->stream();
+    }
+
+    public function reportStockMedDataRead()
+    {
+        return view('reports.liststockmedrep');
+    }
+
+    public function getStockMedicines(Request $request)
+    {
+        $search = $request->get('q'); // search term (optional)
+        
+        $medicines = Medicine::select('id', 'medicine')
+            ->when($search, function($query, $search) {
+                return $query->where('medicine', 'like', "%{$search}%");
+            })
+            ->limit(20) // load only 20 at a time
+            ->get();
+
+        return response()->json($medicines);
+    }
 }

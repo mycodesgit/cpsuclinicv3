@@ -33,20 +33,10 @@
                         <div class="form-group" style="padding: 10px">
                             <div class="form-row">
                                 <div class="col-md-3">
-                                    <label><span class="badge badge-secondary">Select Month</span></label>
-                                    <select class="form-control form-control-sm" name="month" id="monthSelect">
+                                    <label><span class="badge badge-secondary">Select Medicine</span></label>
+                                    <select class="form-control form-control-sm" id="medicine-dropdown" name="medicine_id">
                                         <option disabled selected> --Select-- </option>
-                                        @foreach(range(1,12) as $m)
-                                            <option value="{{ sprintf('%02d', $m) }}" {{ request()->get('month') == sprintf('%02d', $m) ? 'selected' : '' }}>
-                                                {{ DateTime::createFromFormat('!m', $m)->format('F') }}
-                                            </option>
-                                        @endforeach
                                     </select>
-                                    {{-- <script>
-                                        document.getElementById('monthSelect').addEventListener('change', function() {
-                                            alert('Selected month: ' + this.value);
-                                        });
-                                    </script> --}}
                                 </div>
 
                                 <div class="col-md-2">

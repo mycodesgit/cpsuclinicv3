@@ -9,7 +9,8 @@
     $toothPatientActive = in_array($curr_route, ['toothExtractRead', 'toothExtractSearch']) ? 'active' : '';
 
     $patientDataReportActive = in_array($curr_route, ['reportPatientDataRead', 'reportPatientDataShow']) ? 'active' : '';
-    $medicineDataReportActive = in_array($curr_route, ['reportMedicineDataRead']) ? 'active' : '';
+    $medicineDataReportActive = in_array($curr_route, ['reportMedicineDataRead', 'reportsearch_MedicineDataRead']) ? 'active' : '';
+    $medicineStockDataReportActive = in_array($curr_route, ['reportStockMedDataRead']) ? 'active' : '';
 @endphp
 
 
@@ -42,6 +43,7 @@
         <div class="nav flex-column nav-pills nav-stacked nav-tabs-right h-100" aria-orientation="vertical">
             <a class="nav-link {{ $patientDataReportActive }}" href="{{ route('reportPatientDataRead') }}">Patient Data Report</a>
             <a class="nav-link {{ $medicineDataReportActive }}" href="{{ route('reportMedicineDataRead') }}">Medicines Report</a>                                
+            <a class="nav-link {{ $medicineStockDataReportActive }}" href="{{ route('reportStockMedDataRead') }}">Stock Report</a>                                
             <a class="nav-link" href="">Accomplishment Report</a>                                
         </div>
     </div>

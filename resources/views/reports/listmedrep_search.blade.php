@@ -56,6 +56,10 @@
                             </div>
                         </div>
                     </form>
+
+                    <hr>
+
+                    <iframe src="{{ route('reportsearchpdf_MedicineDataRead', ['month' => request('month')]) }}" width="100%" height="500"></iframe>
                 </div>
             </div>
         </div>
