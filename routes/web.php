@@ -93,6 +93,10 @@ Route::group(['middleware'=>['login_auth']],function(){
         Route::get('/medicine/search/result/view/pdfreport', [ReportsController::class,'reportsearchpdf_MedicineDataRead'])->name('reportsearchpdf_MedicineDataRead');
 
         Route::get('/medicine/search/stocks', [ReportsController::class,'reportStockMedDataRead'])->name('reportStockMedDataRead');
+        Route::get('/medicine/search/stocks/search', [ReportsController::class,'reportStockMedDatasearchRead'])->name('reportStockMedDatasearchRead');
+        Route::get('/get-stock-medicines', [ReportsController::class, 'getStockMedicines'])->name('getStockMedicines');
+        Route::get('/medicine/search/stocks/search/view/pdfreport', [ReportsController::class,'reportpdfStockMedDataRead'])->name('reportpdfStockMedDataRead');
+
     });
 
 });

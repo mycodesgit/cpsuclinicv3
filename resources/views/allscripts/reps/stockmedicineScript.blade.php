@@ -1,29 +1,44 @@
 <script>
-    $(document).ready(function () {
-        $('#medicine-dropdown').select2({
-            placeholder: '--Select--',
-            ajax: {
-                url: '/get-medicines',
-                dataType: 'json',
-                delay: 250,
-                data: function (params) {
-                    return {
-                        q: params.term // search term
-                    };
-                },
-                processResults: function (data) {
-                    return {
-                        results: $.map(data, function (item) {
-                            return {
-                                id: item.id,
-                                text: item.medicine
-                            }
+    $(document).ready(function() {
+        // Fetch medicines when the page loads
+        $.ajax({
+            url: "{{ route('getStockMedicines') }}",
+            type: "GET",
+            success: function(data) {
+                let dropdown = $('#medicine-dropdown');
+                data.forEach(function(medicine) {
+                    dropdown.append(
+                        $('<option>', {
+                            value: medicine.id,
+                            text: medicine.medicine
                         })
-                    };
-                },
-                cache: true
+                    );
+                });
             },
-            minimumInputLength: 1
+            error: function(err) {
+                console.log('Error fetching medicines:', err);
+            }
         });
+
+        // $('#medicine-dropdown').on('input', function() {
+        //     let search = $(this).val();
+        //     $.ajax({
+        //         url: "{{ route('getStockMedicines') }}",
+        //         data: { q: search },
+        //         success: function(data) {
+        //             let dropdown = $('#medicine-dropdown');
+        //             dropdown.empty(); 
+        //             dropdown.append('<option disabled selected> --Select-- </option>');
+        //             data.forEach(function(medicine) {
+        //                 dropdown.append(
+        //                     $('<option>', {
+        //                         value: medicine.id,
+        //                         text: medicine.medicine
+        //                     })
+        //                 );
+        //             });
+        //         }
+        //     });
+        // });
     });
 </script>

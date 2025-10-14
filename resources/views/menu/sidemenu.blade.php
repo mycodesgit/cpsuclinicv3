@@ -10,7 +10,7 @@
 
     $patientDataReportActive = in_array($curr_route, ['reportPatientDataRead', 'reportPatientDataShow']) ? 'active' : '';
     $medicineDataReportActive = in_array($curr_route, ['reportMedicineDataRead', 'reportsearch_MedicineDataRead']) ? 'active' : '';
-    $medicineStockDataReportActive = in_array($curr_route, ['reportStockMedDataRead']) ? 'active' : '';
+    $medicineStockDataReportActive = in_array($curr_route, ['reportStockMedDataRead', 'reportStockMedDatasearchRead']) ? 'active' : '';
 @endphp
 
 

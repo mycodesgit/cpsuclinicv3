@@ -34,7 +34,7 @@
                             <div class="form-row">
                                 <div class="col-md-3">
                                     <label><span class="badge badge-secondary">Select Medicine</span></label>
-                                    <select class="form-control form-control-sm" id="medicine-dropdown" name="medicine">
+                                    <select class="form-control form-control-sm" id="medicine-dropdown" name="medicine_id">
                                         <option disabled selected> --Select-- </option>
                                     </select>
                                 </div>
@@ -46,6 +46,9 @@
                             </div>
                         </div>
                     </form>
+                    <hr>
+
+                    <iframe src="{{ route('reportpdfStockMedDataRead', ['medicine' => request('medicine')]) }}" width="100%" height="500"></iframe>
                 </div>
             </div>
         </div>

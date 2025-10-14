@@ -152,6 +152,8 @@
     <!-- Select2 -->
     <script src="{{ asset('style/plugins/select2/js/select2.full.min.js') }}"></script>
 
+    @include('allscripts.validation.stockreportValidation')
+
     <script>
         // Store session message in sessionStorage
         @if(Session::has('success'))
@@ -229,5 +231,10 @@
     @if (request()->routeIs('consultPatientRead', 'consultPatientVisitSearch', 'patientReferRead', 'referPatientVisitSearch', 'toothExtractRead', 'toothExtractSearch',  'reportPatientDataRead', 'reportPatientDataShow'))
         @include('allscripts.reps.patientListOptionScript')
     @endif
+
+    @if (request()->routeIs('reportStockMedDataRead'))
+        @include('allscripts.reps.stockmedicineScript')
+    @endif
+
 </body>
 </html>

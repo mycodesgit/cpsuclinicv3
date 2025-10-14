@@ -125,6 +125,11 @@ class ReportsController extends Controller
         return view('reports.liststockmedrep');
     }
 
+    public function reportStockMedDatasearchRead(Request $request)
+    {
+        return view('reports.liststockmedrepsearch');
+    }
+
     public function getStockMedicines(Request $request)
     {
         $search = $request->get('q'); // search term (optional)
@@ -137,5 +142,22 @@ class ReportsController extends Controller
             ->get();
 
         return response()->json($medicines);
+    }
+
+    public function reportpdfStockMedDataRead(Request $request)
+    {
+        $medicineselected = $request->input('medicine');
+
+        $stockmed = Medicine::where('id', $medicineselected)
+                ->select('medicines.*')
+                ->get();
+        $data = [
+            'stockmed' => $stockmed,
+            'medicineselected' => $medicineselected,
+        ];
+
+        $pdf = PDF::loadView('reports.liststockmedrepsearchpdf', $data)->setPaper('Legal', 'portrait');
+
+        return $pdf->stream();
     }
 }
