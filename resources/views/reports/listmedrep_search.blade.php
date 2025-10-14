@@ -28,7 +28,7 @@
                     <div class="page-header" style="border-bottom: 1px solid #04401f;">
                         <h4>Reports </h4>
                     </div>
-                    <form action="{{ route('reportsearch_MedicineDataRead') }}" method="GET">
+                    <form action="{{ route('reportsearch_MedicineDataRead') }}" method="GET" id="medcnRep">
                         @csrf
                         <div class="form-group" style="padding: 10px">
                             <div class="form-row">

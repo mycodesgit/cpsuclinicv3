@@ -152,6 +152,7 @@
     <!-- Select2 -->
     <script src="{{ asset('style/plugins/select2/js/select2.full.min.js') }}"></script>
 
+    @include('allscripts.validation.medicinereportValidation')
     @include('allscripts.validation.stockreportValidation')
 
     <script>
