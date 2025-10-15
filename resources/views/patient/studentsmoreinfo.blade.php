@@ -145,7 +145,11 @@
                                                     <label class="badge badge-secondary">Barangay:</label>
                                                     <select id="barangay" name="home_brgy" class="form-control select2 form-control-sm update-field">
                                                         <option value="">Select</option>
-                                                        <option value="{{ $patients->home_brgy }}" data-column-id="{{ $patients->id }}" data-column-name="home_brgy" @if($patients->home_brgy == $hbarangays->id) selected @endif>{{ $hbarangays->name }}</option>
+                                                        @if(isset($hbarangays) && $hbarangays)
+                                                            <option value="{{ $patients->home_brgy }}" data-column-id="{{ $patients->id }}" data-column-name="home_brgy" @if($patients->home_brgy == $hbarangays->id) selected @endif>{{ $hbarangays->name }}</option>
+                                                        @else
+                                                            <option value="{{ $patients->home_brgy }}" data-column-id="{{ $patients->id }}" data-column-name="home_brgy">{{ $patients->home_brgy ?? '' }}</option>
+                                                        @endif
                                                     </select>
                                                 </div>
                                             </div>
