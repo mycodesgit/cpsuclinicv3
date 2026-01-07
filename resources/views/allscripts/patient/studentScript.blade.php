@@ -11,34 +11,35 @@
             paging: true,
             "columns": [
                 // { data: 'id'},
-                { 
+                {
                     data: null,
                     render: function(data, type, row) {
-                        // Format: Lastname, Firstname M.
-                        let lname = row.lname || '';
-                        let fname = row.fname || '';
-                        let mname = row.mname ? row.mname.charAt(0) + '.' : '';
-                        return `${lname}, ${fname} ${mname}`.trim();
-                    }
-                }, 
-                { data: 'stdntid' },   
-                { data: 'sex' },   
-                { data: 'c_status' },   
-                { data: 'studCourse' },   
-                { 
-                    data: 'pexam_remarks', 
-                    render: function(data, type, row) {
-                        if (data == 1) {
-                            return '<span class="badge badge-success">Fit for enrollment</span>';
-                        } else if (data == 2) {
-                            return '<span class="badge badge-danger">Not fit for enrollment</span>';
-                        } else if (data == 3) {
-                            return `<span class="badge badge-warning" data-toggle="tooltip" title="${row.pend_reason}">Pending</span>`;
-                        } else {
-                            return '<span class="badge badge-info">NO Remarks</span>';
-                        }
+                        var firstname = data.fname;
+                        var middleInitial = data.mname ? data.mname.substr(0, 1) + '.' : '';
+                        var lastName = data.lname;
+                        var ext = data.ext && data.ext !== 'N/A' ? ' ' + data.ext : ' ';
+                        
+                        return lastName + ', ' + firstname + ' ' + middleInitial + ext;
                     }
                 },
+                { data: 'stud_id' },   
+                { data: 'gender' },   
+                { data: 'civil_status' },   
+                // { data: 'course' },   
+                // { 
+                //     data: 'pexam_remarks', 
+                //     render: function(data, type, row) {
+                //         if (data == 1) {
+                //             return '<span class="badge badge-success">Fit for enrollment</span>';
+                //         } else if (data == 2) {
+                //             return '<span class="badge badge-danger">Not fit for enrollment</span>';
+                //         } else if (data == 3) {
+                //             return `<span class="badge badge-warning" data-toggle="tooltip" title="${row.pend_reason}">Pending</span>`;
+                //         } else {
+                //             return '<span class="badge badge-info">NO Remarks</span>';
+                //         }
+                //     }
+                // },
                 {
                     data: 'id',
                     render: function(data, type, row) {

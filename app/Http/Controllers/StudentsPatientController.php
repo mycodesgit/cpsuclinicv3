@@ -55,23 +55,10 @@ class StudentsPatientController extends Controller
     public function studentsShow(Request $request)
     {
         $currentYear = Carbon::now()->year;
-        $data = Patients::whereYear('patients.created_at', $currentYear)
-            ->select('patients.*')
-            ->orderBy('patients.created_at', 'ASC')
-            ->get()
-            ->map(function ($patient) {
-                return [
-                    'id' => Crypt::encryptString($patient->id),
-                    'fname' => $patient->fname,
-                    'lname' => $patient->lname,
-                    'mname' => $patient->mname,
-                    'stdntid' => $patient->stdntid,
-                    'sex' => $patient->sex,
-                    'studCourse' => $patient->studCourse,
-                    'c_status' => $patient->c_status,
-                    'pexam_remarks' => $patient->pexam_remarks,
-                ];
-            });
+        $campus = Auth::guard('web')->user()->campus;
+        
+        $data = Student::where('campus', $campus)
+            ->get();
         
         return response()->json(['data' => $data]);
     }
